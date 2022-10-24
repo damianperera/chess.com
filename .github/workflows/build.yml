@@ -64,16 +64,26 @@ jobs:
         release_name: ${{ steps.create_tag.outputs.tag }}
         draft: true
         prerelease: false
-    - name: Download macOS artifacts
+    - name: Download macOS artifact
       uses: actions/download-artifact@v2
       with:
         name: build-macOS
-    - name: Download Windows artifacts
+    - name: Download Windows artifact
       uses: actions/download-artifact@v2
       with:
         name: build-Windows
-    - name: Extract
+    - name: Extract artifacts
       run: |
+        tar xvzf build-macOS.tar.gz
+        tar xvzf build-Windows.tar.gz
+        ls -la
+    - name: Extract macOS package
+      run: |
+        cd build-macOS
+        ls -la
+    - name: Extract Windows package
+      run: |
+        cd build-Windows
         ls -la
 #     - name: Release
 #       uses: softprops/action-gh-release@v1
