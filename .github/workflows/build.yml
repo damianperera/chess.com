@@ -74,8 +74,10 @@ jobs:
         name: build-Windows
     - name: Extract artifacts
       run: |
-        tar xvzf build-macOS.tar.gz osx
-        tar xvzf build-Windows.tar.gz windows
+        mkdir osx
+        mkdir windows
+        tar xvzf build-macOS.tar.gz -C osx
+        tar xvzf build-Windows.tar.gz -C windows
     - name: Repackage distributibles
       run: |
         mkdir dist
