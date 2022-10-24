@@ -36,9 +36,12 @@ jobs:
       - name: Build
         working-directory: client/desktop/
         run: npm run build
+      - name: Package
+        working-directory: client/desktop/
+        run: tar -zcvf build.tar.gz build
       - name: Upload artifact
         uses: actions/upload-artifact@main
         with:
           name: build
-          path: client/desktop/build/
+          path: client/desktop/build.tar.gz
           retention-days: ${{ inputs.retention-days }}
