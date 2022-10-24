@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "pack:osx-arm": "npx electron-packager . 'Chess' --overwrite --prune=true --out=build/osx-arm --icon=./icons/icon.icns --asar --platform=darwin --arch=arm64 --darwin-dark-mode-support",
-    "pack:osx-intel": "npx electron-packager . 'Chess' --overwrite --prune=true --out=build/osx-intel --icon=./icons/icon.icns --asar --platform=darwin --arch=x64 --darwin-dark-mode-support",
-    "pack:win64": "npx electron-packager . 'Chess' --overwrite --prune=true --out=build/win64 --icon=./icons/icon.ico --asar --platform=win32 --arch=x64",
-    "build": "npm run pack:osx-arm && npm run pack:osx-intel && npm run pack:win64",
+    "build:osx:arm": "npx electron-packager . 'Chess' --overwrite --prune=true --out=build/osx-arm --icon=./icons/icon.icns --asar --platform=darwin --arch=arm64 --darwin-dark-mode-support",
+    "build:osx:intel": "npx electron-packager . 'Chess' --overwrite --prune=true --out=build/osx-intel --icon=./icons/icon.icns --asar --platform=darwin --arch=x64 --darwin-dark-mode-support",
+    "build:macos": "npm run build:osx:arm && npm run build:osx:intel",
+    "build:windows": "npx electron-packager . 'Chess' --overwrite --prune=true --out=build/win64 --icon=./icons/icon.ico --asar --platform=win32 --arch=x64",
+    "build": "run-script-os",
     "help": "npx electron-packager --help"
   },
   "repository": {
@@ -29,6 +30,7 @@
   "homepage": "https://github.com/damianperera/chess#readme",
   "devDependencies": {
     "electron": "^21.2.0",
-    "electron-packager": "^17.0.0"
+    "electron-packager": "^17.0.0",
+    "run-script-os": "^1.1.6"
   }
 }
