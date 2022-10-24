@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build:osx:arm": "npx electron-packager . Chess.com --overwrite --prune=true --out=build/osx-arm --icon=./icons/icon.icns --asar --platform=darwin --arch=arm64 --darwin-dark-mode-support",
-    "build:osx:intel": "npx electron-packager . Chess.com --overwrite --prune=true --out=build/osx-intel --icon=./icons/icon.icns --asar --platform=darwin --arch=x64 --darwin-dark-mode-support",
+    "build:osx:arm": "npx electron-packager . Chess.com --overwrite --prune=true --out=build/osx-arm --icon=./icons/icon.icns --asar --platform=darwin --arch=arm64 --darwin-dark-mode-support --osx-sign",
+    "build:osx:intel": "npx electron-packager . Chess.com --overwrite --prune=true --out=build/osx-intel --icon=./icons/icon.icns --asar --platform=darwin --arch=x64 --darwin-dark-mode-support --osx-sign",
     "build:windows": "npx electron-packager . Chess.com --overwrite --prune=true --out=build/win64 --icon=./icons/icon.ico --asar --platform=win32 --arch=x64",
     "build:macos": "npm run build:osx:arm && npm run build:osx:intel",
     "build": "run-script-os"
