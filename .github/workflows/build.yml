@@ -74,26 +74,25 @@ jobs:
         name: build-Windows
     - name: Extract artifacts
       run: |
-        tar xvzf build-macOS.tar.gz
-        tar xvzf build-Windows.tar.gz
-        ls -la
-    - name: Extract macOS package
+        tar xvzf build-macOS.tar.gz osx
+        tar xvzf build-Windows.tar.gz windows
+    - name: Repackage distributibles
       run: |
-        cd build-macOS
+        mkdir dist
+        cp osx/osx-arm/Chess.com-darwin-arm64/Chess.com.app dist/Chess.com-osx-arm64.app
+        cp osx/osx-intel/Chess.com-darwin-x64/Chess.com.app dist/Chess.com-osx-x64.app
+        cp windows/win64/Chess.com-win32-x64/Chess.com.exe dist/Chess.com-win32-x64.exe
         ls -la
-    - name: Extract Windows package
-      run: |
-        cd build-Windows
-        ls -la
-#     - name: Release
-#       uses: softprops/action-gh-release@v1
-#       with:
-#         files: |
-#           Release.txt
-#           LICENSE
-#     - name: Publish release
-#       uses: eregon/publish-release@v1
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#       with:
-#         release_id: ${{ steps.create_release.outputs.id }}
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dist/Chess.com-osx-arm64.app
+          dist/Chess.com-osx-x64.app
+          dist/Chess.com-win32-x64.exe
+    - name: Publish release
+      uses: eregon/publish-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        release_id: ${{ steps.create_release.outputs.id }}
