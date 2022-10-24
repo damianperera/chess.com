@@ -41,9 +41,8 @@ jobs:
         working-directory: client/desktop/
         run: |
           tar \
-            --dereference --hard-dereference \
             --directory build/ \
-            -cvfg "$RUNNER_TEMP/build.tar.gz" \
+            -czf "$RUNNER_TEMP/build.tar.gz" \
             --exclude=.git \
             --exclude=.github \
             .
