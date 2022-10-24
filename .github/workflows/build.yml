@@ -35,4 +35,21 @@ jobs:
         run: npm ci
       - name: Build
         working-directory: client/desktop/
-        run: npm run build && ls -l
+        run: npm run build
+      - name: Package
+        shell: bash
+        working-directory: client/desktop/
+        run: |
+          tar \
+            --dereference --hard-dereference \
+            --directory build/ \
+            -cvfg "$RUNNER_TEMP/build.tar.gz" \
+            --exclude=.git \
+            --exclude=.github \
+            .
+      - name: Upload artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: build
+          path: ${{ runner.temp }}/artifact.tar.gz
+          retention-days: ${{ inputs.retention-days }}
