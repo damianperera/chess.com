@@ -1,0 +1,34 @@
+{
+  "name": "chess.com",
+  "version": "0.1.0",
+  "description": "Chess.com Desktop App (Community Edition)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "pack:osx-arm": "npx electron-packager . 'Chess' --overwrite --prune=true --out=build/osx-arm --icon=./icons/icon.icns --asar --platform=darwin --arch=arm64 --darwin-dark-mode-support",
+    "pack:osx-intel": "npx electron-packager . 'Chess' --overwrite --prune=true --out=build/osx-intel --icon=./icons/icon.icns --asar --platform=darwin --arch=x64 --darwin-dark-mode-support",
+    "pack:win64": "npx electron-packager . 'Chess' --overwrite --prune=true --out=build/win64 --icon=./icons/icon.ico --asar --platform=win32 --arch=x64",
+    "build": "npm run pack:osx-arm && npm run pack:osx-intel && npm run pack:win64",
+    "help": "npx electron-packager --help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damianperera/chess.git"
+  },
+  "keywords": [
+    "chess",
+    "desktop",
+    "electron"
+  ],
+  "author": "Damian Perera",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/damianperera/chess/issues"
+  },
+  "homepage": "https://github.com/damianperera/chess#readme",
+  "devDependencies": {
+    "electron": "^21.2.0",
+    "electron-packager": "^17.0.0"
+  }
+}
