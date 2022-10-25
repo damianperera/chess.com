@@ -68,8 +68,8 @@ jobs:
     - name: Repackage distributibles
       run: |
         mkdir dist
-        cp osx/build/osx-arm/Chess.com-darwin-arm64/Chess.com.app dist/Chess.com-macOS-arm64.app
-        cp osx/build/osx-intel/Chess.com-darwin-x64/Chess.com.app dist/Chess.com-macOS-x64.app
+        cp -r osx/build/osx-arm/Chess.com-darwin-arm64/Chess.com.app dist/Chess.com-macOS-arm64.app
+        cp -r osx/build/osx-intel/Chess.com-darwin-x64/Chess.com.app dist/Chess.com-macOS-x64.app
         cp windows/build/win64/Chess.com-win32-x64/Chess.com.exe dist/Chess.com-Windows-x64.exe
         ls -lR | more
     - name: Create release tag
