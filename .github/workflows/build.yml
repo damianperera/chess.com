@@ -76,8 +76,9 @@ jobs:
       run: |
         mkdir osx
         mkdir windows
-        tar xvzf build-macOS.tar.gz -C osx
-        tar xvzf build-Windows.tar.gz -C windows
+        tar xzf build-macOS.tar.gz -C osx/
+        tar xzf build-Windows.tar.gz -C windows/
+        ls -la
     - name: Repackage distributibles
       run: |
         mkdir dist
