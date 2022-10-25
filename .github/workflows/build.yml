@@ -37,7 +37,7 @@ jobs:
         working-directory: client/desktop/
         run: npm run build
       - name: Fix permissions (macOS only)
-        if: ${{ runner.os }} == macOS
+        if: ${{ "$RUNNER_OS" == "macOS" }}
         working-directory: client/desktop/build
         run: |
           xattr -cr osx-arm/Chess.com-darwin-arm64/Chess.com.app
