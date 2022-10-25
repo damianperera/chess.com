@@ -44,7 +44,7 @@ jobs:
           xattr -cr osx-intel/Chess.com-darwin-x64/Chess.com.app
       - name: Package
         working-directory: client/desktop/
-        run: tar -I 'gzip -9' -cf build-${{ runner.os }}.tar.gz build
+        run: tar -zcf build-${{ runner.os }}.tar.gz build
       - name: Upload artifact
         uses: actions/upload-artifact@main
         with:
