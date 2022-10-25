@@ -76,19 +76,22 @@ jobs:
       id: create_tag
       run: |
         echo "::set-output name=tag::$(date +%Y.%m.%d.%H%M%S)"
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ steps.create_tag.outputs.tag }}
-        release_name: ${{ steps.create_tag.outputs.tag }}
-        draft: true
-        prerelease: false
+#     - name: Create release
+#       id: create_release
+#       uses: actions/create-release@v1
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       with:
+#         tag_name: ${{ steps.create_tag.outputs.tag }}
+#         release_name: ${{ steps.create_tag.outputs.tag }}
+#         draft: true
+#         prerelease: false
     - name: Release
+      id: create_release
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: ${{ steps.create_tag.outputs.tag }}
+        generate_release_notes: true
         files: |
           dist/Chess.com-macOS-arm64.app
           dist/Chess.com-macOS-x64.app
