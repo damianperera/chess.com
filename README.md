@@ -1,4 +1,5 @@
 # Chess.com Desktop App (Community Edition)
+[![release](https://github.com/damianperera/chess.com/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/damianperera/chess.com/actions/workflows/build.yml)
 
 ![screenshot](assets/screenshot.jpg)
 
