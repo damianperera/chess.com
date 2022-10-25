@@ -72,20 +72,15 @@ jobs:
         cp -r osx/build/osx-intel/Chess.com-darwin-x64/Chess.com.app dist/Chess.com-macOS-x64.app
         cp windows/build/win64/Chess.com-win32-x64/Chess.com.exe dist/Chess.com-Windows-x64.exe
         ls -lR | more
+    - name: Archive macOS distributibles
+      run: |
+        cd dist/
+        tar -zcvf Chess.com-macOS-arm64.tar.gz Chess.com-macOS-arm64.app
+        tar -zcvf Chess.com-macOS-x64.tar.gz Chess.com-macOS-x64.app
     - name: Create release tag
       id: create_tag
       run: |
         echo "::set-output name=tag::$(date +%Y.%m.%d.%H%M%S)"
-#     - name: Create release
-#       id: create_release
-#       uses: actions/create-release@v1
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#       with:
-#         tag_name: ${{ steps.create_tag.outputs.tag }}
-#         release_name: ${{ steps.create_tag.outputs.tag }}
-#         draft: true
-#         prerelease: false
     - name: Release
       id: create_release
       uses: softprops/action-gh-release@v1
@@ -93,8 +88,8 @@ jobs:
         tag_name: ${{ steps.create_tag.outputs.tag }}
         generate_release_notes: true
         files: |
-          dist/Chess.com-macOS-arm64.app
-          dist/Chess.com-macOS-x64.app
+          dist/Chess.com-macOS-arm64.tar.gz
+          dist/Chess.com-macOS-x64.tar.gz
           dist/Chess.com-Windows-x64.exe
     - name: Publish release
       uses: eregon/publish-release@v1
