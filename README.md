@@ -18,4 +18,4 @@
 1. Download the correct file for your platform
  - 32 bit (x32): `Unsupported`
  - 64 bit (x64): [Chess.com-Windows-x64.tar.gz](https://github.com/damianperera/chess.com/releases/latest/download/Chess.com-Windows-x64.tar.gz)
-2. Open the `Chess.com-Windows-x64.exe` file within the extracted folder
+2. Open the `Chess.com.exe` file within the extracted folder
