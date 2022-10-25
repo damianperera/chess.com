@@ -82,17 +82,17 @@ jobs:
     - name: Repackage distributibles
       run: |
         mkdir dist
-        cp osx/osx-arm/Chess.com-darwin-arm64/Chess.com.app dist/Chess.com-osx-arm64.app
-        cp osx/osx-intel/Chess.com-darwin-x64/Chess.com.app dist/Chess.com-osx-x64.app
-        cp windows/win64/Chess.com-win32-x64/Chess.com.exe dist/Chess.com-win32-x64.exe
+        cp osx/build/osx-arm/Chess.com-darwin-arm64/Chess.com.app dist/Chess.com-macOS-arm64.app
+        cp osx/build/osx-intel/Chess.com-darwin-x64/Chess.com.app dist/Chess.com-macOS-x64.app
+        cp windows/build/win64/Chess.com-win32-x64/Chess.com.exe dist/Chess.com-Windows-x64.exe
         ls -lR | more
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          dist/Chess.com-osx-arm64.app
-          dist/Chess.com-osx-x64.app
-          dist/Chess.com-win32-x64.exe
+          dist/Chess.com-macOS-arm64.app
+          dist/Chess.com-macOS-x64.app
+          dist/Chess.com-Windows-x64.exe
     - name: Publish release
       uses: eregon/publish-release@v1
       env:
