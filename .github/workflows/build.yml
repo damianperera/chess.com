@@ -76,13 +76,14 @@ jobs:
         mkdir dist
         cp -r osx/build/osx-arm/Chess.com-darwin-arm64/Chess.com.app dist/Chess.com-macOS-arm64.app
         cp -r osx/build/osx-intel/Chess.com-darwin-x64/Chess.com.app dist/Chess.com-macOS-x64.app
-        cp windows/build/win64/Chess.com-win32-x64/Chess.com.exe dist/Chess.com-Windows-x64.exe
+        cp -r windows/build/win64/Chess.com-win32-x64/ dist/Chess.com-Windows-x64/
         ls -lR | more
-    - name: Archive macOS distributibles
+    - name: Archive distributibles
       run: |
         cd dist/
         tar -zcvf Chess.com-macOS-arm64.tar.gz Chess.com-macOS-arm64.app
         tar -zcvf Chess.com-macOS-x64.tar.gz Chess.com-macOS-x64.app
+        tar -zcvf Chess.com-Windows-x64.tar.gz Chess.com-Windows-x64/
     - name: Create release tag
       id: create_tag
       run: |
@@ -96,7 +97,7 @@ jobs:
         files: |
           dist/Chess.com-macOS-arm64.tar.gz
           dist/Chess.com-macOS-x64.tar.gz
-          dist/Chess.com-Windows-x64.exe
+          dist/Chess.com-Windows-x64.tar.gz
     - name: Publish release
       uses: eregon/publish-release@v1
       env:
