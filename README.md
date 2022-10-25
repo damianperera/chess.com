@@ -8,11 +8,11 @@
  - **Intel**: [Chess.com-macOS-x64.tar.gz](https://github.com/damianperera/chess.com/releases/latest/download/Chess.com-macOS-x64.tar.gz)
  - **Apple Silicon**: [Chess.com-macOS-arm64.tar.gz](https://github.com/damianperera/chess.com/releases/latest/download/Chess.com-macOS-arm64.tar.gz)
 3. Extract it
-4. Rename the extracted file to `Chess.com` (optional)
+4. Rename the extracted file to `Chess.com`
 5. Drag and drop the file to your `Applications` directory
 6. Open the `Terminal` app and execute the following:
   ```sh
-  $ xattr -cr /Applications/Chess.com.app
+  $ xattr -cr ~/Applications/Chess.com.app
   ```
 ### Windows
 1. Download the correct file for your platform
