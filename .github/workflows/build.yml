@@ -78,14 +78,14 @@ jobs:
         mkdir windows
         tar xzf build-macOS.tar.gz -C osx/
         tar xzf build-Windows.tar.gz -C windows/
-        ls -la
+        ls -lR | more
     - name: Repackage distributibles
       run: |
         mkdir dist
         cp osx/osx-arm/Chess.com-darwin-arm64/Chess.com.app dist/Chess.com-osx-arm64.app
         cp osx/osx-intel/Chess.com-darwin-x64/Chess.com.app dist/Chess.com-osx-x64.app
         cp windows/win64/Chess.com-win32-x64/Chess.com.exe dist/Chess.com-win32-x64.exe
-        ls -la
+        ls -lR | more
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
