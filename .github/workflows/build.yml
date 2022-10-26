@@ -81,9 +81,9 @@ jobs:
     - name: Archive distributibles
       run: |
         cd dist/
-        tar -I 'gzip -9' -cf Chess.com-macOS-arm64.tar.gz Chess.com-macOS-arm64.app
-        tar -I 'gzip -9' -cf Chess.com-macOS-x64.tar.gz Chess.com-macOS-x64.app
-        tar -I 'gzip -9' -cf Chess.com-Windows-x64.tar.gz Chess.com-Windows-x64/
+        tar -I 'pigz -9' -cf Chess.com-macOS-arm64.tar.gz Chess.com-macOS-arm64.app
+        tar -I 'pigz -9' -cf Chess.com-macOS-x64.tar.gz Chess.com-macOS-x64.app
+        tar -I 'pigz -9' -cf Chess.com-Windows-x64.tar.gz Chess.com-Windows-x64/
     - name: Create release tag
       id: create_tag
       run: |
